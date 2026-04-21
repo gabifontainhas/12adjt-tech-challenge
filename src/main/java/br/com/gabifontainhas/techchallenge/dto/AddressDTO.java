@@ -1,16 +1,22 @@
 package br.com.gabifontainhas.techchallenge.dto;
 
 import br.com.gabifontainhas.techchallenge.entity.Address;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class AddressDTO {
     public record Request(
+            @NotBlank
             String street,
+            @NotBlank
             String number,
+            @NotBlank
             String city,
+            @NotBlank
             String state,
+            @NotBlank
             String zipcode
     ) {
     }

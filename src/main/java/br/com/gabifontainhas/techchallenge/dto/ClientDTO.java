@@ -14,20 +14,26 @@ public final class ClientDTO {
     public record PostRequest(
             @NotBlank
             String email,
+            @NotBlank
             String name,
+            @NotBlank
             String password,
             @Valid
             @NotNull
             AddressDTO.Request address,
+            @NotBlank
             String phoneNumber
     ) {
     }
 
     public record PutRequest(
+            @NotBlank
             String name,
+            @NotBlank
             String phoneNumber,
             @Valid
-            @NotNull AddressDTO.Request address
+            @NotNull
+            AddressDTO.Request address
     ) {
     }
 
@@ -37,8 +43,6 @@ public final class ClientDTO {
             String name,
             String login,
             LocalDate lastUpdate,
-            @Valid
-            @NotNull
             AddressDTO.Response address,
             String phoneNumber
     ) {

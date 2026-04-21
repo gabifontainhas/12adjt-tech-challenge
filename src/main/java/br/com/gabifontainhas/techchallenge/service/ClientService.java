@@ -1,7 +1,8 @@
 package br.com.gabifontainhas.techchallenge.service;
 
 import br.com.gabifontainhas.techchallenge.entity.Client;
-import br.com.gabifontainhas.techchallenge.entity.User;
+import br.com.gabifontainhas.techchallenge.exception.EmailAlreadyExistsException;
+import br.com.gabifontainhas.techchallenge.exception.UserNotFoundException;
 import br.com.gabifontainhas.techchallenge.repository.ClientRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +16,18 @@ public class ClientService {
         this.clientRepository = clientRepository;
     }
 
-    public void create(Client client) {
-            this.clientRepository.save(client);
+    public Client create(Client client) {
+        if (clientRepository.existsUserByEmail(client.getEmail())) {
+            throw new EmailAlreadyExistsException("E-mail already exists");
+        } else {
+            return this.clientRepository.save(client);
+        }
     }
 
-    public void update(Long id, Client updatedClient) {
-        var client = clientRepository.findClientById(id).get();
+    public Client update(Long id, Client updatedClient) {
+        var client = clientRepository.findClientById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
         client.update(updatedClient);
-        this.clientRepository.save(client);
+        return this.clientRepository.save(client);
     }
 
     public List<Client> findAll(int size, int offset) {

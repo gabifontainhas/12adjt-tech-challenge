@@ -2,6 +2,7 @@ package br.com.gabifontainhas.techchallenge.entity;
 
 import br.com.gabifontainhas.techchallenge.dto.ClientDTO;
 import br.com.gabifontainhas.techchallenge.dto.OwnerDTO;
+import br.com.gabifontainhas.techchallenge.exception.InvalidPasswordException;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import lombok.Getter;
@@ -73,7 +74,7 @@ public class User {
         if (this.password.equals(oldPassword)) {
             this.password = newPassword;
         } else {
-            throw new RuntimeException();
+            throw new InvalidPasswordException("The current password provided is incorrect");
         }
     }
 }

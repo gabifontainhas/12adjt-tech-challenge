@@ -1,7 +1,6 @@
 package br.com.gabifontainhas.techchallenge.controller;
 
-import br.com.gabifontainhas.techchallenge.dto.*;
-import br.com.gabifontainhas.techchallenge.entity.User;
+import br.com.gabifontainhas.techchallenge.dto.UserDTO;
 import br.com.gabifontainhas.techchallenge.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -51,6 +50,6 @@ public class UserController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUserById(@PathVariable Long id) {
         userService.deleteUserById(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 }

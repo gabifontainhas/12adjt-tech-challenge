@@ -1,12 +1,10 @@
 package br.com.gabifontainhas.techchallenge.service;
 
 import br.com.gabifontainhas.techchallenge.dto.LoginDTO;
-import br.com.gabifontainhas.techchallenge.dto.UserDTO;
 import br.com.gabifontainhas.techchallenge.entity.User;
+import br.com.gabifontainhas.techchallenge.exception.InvalidCredentialsException;
+import br.com.gabifontainhas.techchallenge.exception.UserNotFoundException;
 import br.com.gabifontainhas.techchallenge.repository.UserRepository;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,29 +23,37 @@ public class UserService {
     }
 
     public User findUserById(Long id) {
-        return userRepository.findUserById(id).get();
+        return userRepository.findUserById(id).orElseThrow(() -> new UserNotFoundException("User doesn't exist"));
     }
 
     public List<User> findUserByName(String name) {
-        return userRepository.findUserByName(name);
+        var userList = userRepository.findUserByName(name);
+        if (userList.isEmpty()) {
+            throw new UserNotFoundException("User not found");
+        }
+        else {
+            return userList;
+        }
     }
 
     public void deleteUserById(Long id) {
+        if (!userRepository.existsById(id)) {
+            throw new UserNotFoundException("Could not delete: User with ID " + id + " not found");
+        }
         this.userRepository.deleteById(id);
     }
 
     public void updatePassword(Long id, String oldPassword, String newPassword) {
-        var user = userRepository.findUserById(id).get();
+        var user = userRepository.findUserById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
         user.updatePassword(newPassword, oldPassword);
         userRepository.save(user);
     }
 
-    public LoginDTO.Response loginUser(@NotBlank @NotNull String login, @NotBlank @NotNull String password) {
-        if(userRepository.existsUserByLoginAndPassword(login, password)) {
+    public LoginDTO.Response loginUser(String login, String password) {
+        if (userRepository.existsUserByLoginAndPassword(login, password)) {
             return new LoginDTO.Response("token_placeholder", login);
-        }
-        else {
-            throw new RuntimeException();
+        } else {
+            throw new InvalidCredentialsException("Authentication Failed");
         }
     }
 }

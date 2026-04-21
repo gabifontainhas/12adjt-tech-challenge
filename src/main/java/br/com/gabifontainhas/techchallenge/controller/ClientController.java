@@ -4,6 +4,7 @@ import br.com.gabifontainhas.techchallenge.dto.ClientDTO;
 import br.com.gabifontainhas.techchallenge.entity.Client;
 import br.com.gabifontainhas.techchallenge.service.ClientService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,14 +31,14 @@ public class ClientController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> create(@Valid @RequestBody ClientDTO.PostRequest dto) { //retornar o objeto
-        this.clientService.create(new Client(dto));
-        return ResponseEntity.status(201).build();
+    public ResponseEntity<ClientDTO.Response> create(@Valid @RequestBody ClientDTO.PostRequest dto) { //retornar o objeto
+        var client = this.clientService.create(new Client(dto));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ClientDTO.Response(client));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> update(@PathVariable Long id, @Valid @RequestBody ClientDTO.PutRequest dto) { //retornar o objeto
-        this.clientService.update(id, new Client(dto));
-        return ResponseEntity.status(201).build();
+    public ResponseEntity<ClientDTO.Response> update(@PathVariable Long id, @Valid @RequestBody ClientDTO.PutRequest dto) { //retornar o objeto
+        var client = this.clientService.update(id, new Client(dto));
+        return ResponseEntity.ok(new ClientDTO.Response(client));
     }
 }

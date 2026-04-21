@@ -23,7 +23,7 @@ public class AuthenticationController {
     public ResponseEntity<LoginDTO.Response> loginUser(
             @Valid
             @RequestBody
-            LoginDTO.Request dto) { //TODO usar o try catch para ajustar o código de erro
+            LoginDTO.Request dto) {
         var loginResponse = this.userService.loginUser(dto.login(), dto.password());
         return ResponseEntity.ok(loginResponse);
     }

@@ -14,19 +14,25 @@ public final class OwnerDTO {
     public record PostRequest(
             @NotBlank
             String email,
+            @NotBlank
             String name,
+            @NotBlank
             String password,
             @Valid
             @NotNull
             AddressDTO.Request address,
+            @NotBlank
             String restaurantName
     ) {
     }
 
     public record PutRequest(
+            @NotBlank
             String name,
             @Valid
-            @NotNull AddressDTO.Request address,
+            @NotNull
+            AddressDTO.Request address,
+            @NotBlank
             String restaurantName
     ) {
     }
