@@ -18,4 +18,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT u FROM User u LIMIT :size OFFSET :offset")
     List<User> findAllUsers(int size, int offset);
+
+    boolean existsUserByEmail(String email);
+
 }

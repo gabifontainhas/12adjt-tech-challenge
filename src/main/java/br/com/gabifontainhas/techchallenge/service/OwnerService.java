@@ -4,6 +4,7 @@ import br.com.gabifontainhas.techchallenge.entity.Owner;
 import br.com.gabifontainhas.techchallenge.exception.EmailAlreadyExistsException;
 import br.com.gabifontainhas.techchallenge.exception.UserNotFoundException;
 import br.com.gabifontainhas.techchallenge.repository.OwnerRepository;
+import br.com.gabifontainhas.techchallenge.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,13 +13,16 @@ import java.util.List;
 public class OwnerService {
 
     private final OwnerRepository ownerRepository;
+    private final UserRepository userRepository;
 
-    public OwnerService(OwnerRepository ownerRepository) {
+
+    public OwnerService(OwnerRepository ownerRepository, UserRepository userRepository){
         this.ownerRepository = ownerRepository;
+        this.userRepository = userRepository;
     }
 
     public Owner create(Owner owner) {
-        if (ownerRepository.existsUserByEmail(owner.getEmail())) {
+        if (userRepository.existsUserByEmail(owner.getEmail())) {
             throw new EmailAlreadyExistsException("E-mail already exists");
         } else {
             return this.ownerRepository.save(owner);

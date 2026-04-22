@@ -15,5 +15,4 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     @Query("SELECT c FROM Customer c LIMIT :size OFFSET :offset")
     List<Customer> findAll(int size, int offset);
 
-    boolean existsUserByEmail(String email);
 }

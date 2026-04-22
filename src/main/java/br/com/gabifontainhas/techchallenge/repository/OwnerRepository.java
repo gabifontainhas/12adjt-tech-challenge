@@ -17,5 +17,5 @@ public interface OwnerRepository extends JpaRepository<Owner, Long> {
     @Query("SELECT o FROM Owner o LIMIT :size OFFSET :offset")
     List<Owner> findAll(int size, int offset);
 
-    boolean existsUserByEmail(String email);
+
 }
