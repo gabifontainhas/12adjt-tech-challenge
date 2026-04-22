@@ -1,6 +1,6 @@
 package br.com.gabifontainhas.techchallenge.entity;
 
-import br.com.gabifontainhas.techchallenge.dto.ClientDTO;
+import br.com.gabifontainhas.techchallenge.dto.CustomerDTO;
 import br.com.gabifontainhas.techchallenge.dto.OwnerDTO;
 import br.com.gabifontainhas.techchallenge.exception.InvalidPasswordException;
 import jakarta.persistence.*;
@@ -36,7 +36,7 @@ public class User {
     @JoinColumn(name = "address_id")
     private Address address;
 
-    public User(@Valid ClientDTO.PostRequest dto) {
+    public User(@Valid CustomerDTO.PostRequest dto) {
         this.email = dto.email();
         this.login = dto.email();
         this.name = dto.name();
@@ -45,7 +45,7 @@ public class User {
         this.lastUpdate = LocalDate.now();
     }
 
-    public User(@Valid ClientDTO.PutRequest dto) {
+    public User(@Valid CustomerDTO.PutRequest dto) {
         this.name = dto.name();
         this.address = new Address(dto.address());
     }

@@ -1,8 +1,8 @@
 package br.com.gabifontainhas.techchallenge.entity;
 
-import br.com.gabifontainhas.techchallenge.dto.ClientDTO;
 import br.com.gabifontainhas.techchallenge.dto.OwnerDTO;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

@@ -8,6 +8,7 @@ import br.com.gabifontainhas.techchallenge.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class UserService {
@@ -51,7 +52,7 @@ public class UserService {
 
     public LoginDTO.Response loginUser(String login, String password) {
         if (userRepository.existsUserByLoginAndPassword(login, password)) {
-            return new LoginDTO.Response("token_placeholder", login);
+            return new LoginDTO.Response(UUID.randomUUID().toString(), login);
         } else {
             throw new InvalidCredentialsException("Authentication Failed");
         }

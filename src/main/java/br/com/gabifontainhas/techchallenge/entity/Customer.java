@@ -1,6 +1,6 @@
 package br.com.gabifontainhas.techchallenge.entity;
 
-import br.com.gabifontainhas.techchallenge.dto.ClientDTO;
+import br.com.gabifontainhas.techchallenge.dto.CustomerDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.validation.Valid;
@@ -11,26 +11,26 @@ import lombok.NoArgsConstructor;
 @Table
 @NoArgsConstructor
 @Getter
-public class Client extends User {
+public class Customer extends User {
 
     private String phoneNumber;
 
-    public Client(
+    public Customer(
             @Valid
-            ClientDTO.PostRequest dto) {
+            CustomerDTO.PostRequest dto) {
         super(dto);
         this.phoneNumber = dto.phoneNumber();
     }
 
-    public Client(
+    public Customer(
             @Valid
-            ClientDTO.PutRequest dto) {
+            CustomerDTO.PutRequest dto) {
         super(dto);
         this.phoneNumber = dto.phoneNumber();
     }
 
-    public void update(Client updatedClient) {
-        super.update(updatedClient);
-        this.phoneNumber = updatedClient.getPhoneNumber();
+    public void update(Customer updatedCustomer) {
+        super.update(updatedCustomer);
+        this.phoneNumber = updatedCustomer.getPhoneNumber();
     }
 }

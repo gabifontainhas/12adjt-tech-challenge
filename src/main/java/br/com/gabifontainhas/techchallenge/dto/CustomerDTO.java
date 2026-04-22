@@ -1,6 +1,6 @@
 package br.com.gabifontainhas.techchallenge.dto;
 
-import br.com.gabifontainhas.techchallenge.entity.Client;
+import br.com.gabifontainhas.techchallenge.entity.Customer;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class ClientDTO {
+public final class CustomerDTO {
     public record PostRequest(
             @NotBlank
             String email,
@@ -46,7 +46,7 @@ public final class ClientDTO {
             AddressDTO.Response address,
             String phoneNumber
     ) {
-        public Response(Client c) {
+        public Response(Customer c) {
             this(c.getId(), c.getEmail(), c.getName(), c.getLogin(), c.getLastUpdate(), new AddressDTO.Response(c.getAddress()), c.getPhoneNumber());
         }
     }
