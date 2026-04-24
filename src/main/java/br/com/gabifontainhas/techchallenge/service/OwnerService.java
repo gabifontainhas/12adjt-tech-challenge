@@ -35,7 +35,6 @@ public class OwnerService {
         return this.ownerRepository.save(owner);
     }
 
-
     public List<Owner> findAll(int size, int offset) {
         return ownerRepository.findAll(size, offset);
     }

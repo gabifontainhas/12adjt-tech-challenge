@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class LoginDTO {
-    @Schema(description = "Entity for login operation")
+
+    @Schema(name = "LoginDTO.Request")
     public record Request(
             @Schema(description = "User login", example = "gabriela.sordi@teste.com")
             @NotBlank
@@ -18,8 +19,11 @@ public final class LoginDTO {
     ) {
     }
 
+    @Schema(name = "LoginDTO.Response")
     public record Response(
+            @Schema(description = "Generated token for login", example = "0f138924-72c3-4958-af0f-05850dd4cd3d")
             String token,
+            @Schema(description = "User login", example = "gabriela.sordi@teste.com")
             String login
     ) {
     }
