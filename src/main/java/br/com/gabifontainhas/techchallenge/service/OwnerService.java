@@ -16,9 +16,26 @@ public class OwnerService {
     private final UserRepository userRepository;
 
 
-    public OwnerService(OwnerRepository ownerRepository, UserRepository userRepository){
+    public OwnerService(OwnerRepository ownerRepository, UserRepository userRepository) {
         this.ownerRepository = ownerRepository;
         this.userRepository = userRepository;
+    }
+
+    public List<Owner> findAll(int size, int offset) {
+        return ownerRepository.findAll(size, offset);
+    }
+
+    public Owner findOwnerById(Long id) {
+        return ownerRepository.findOwnerById(id).orElseThrow(() -> new UserNotFoundException("Owner not found"));
+    }
+
+    public List<Owner> findOwnerByName(String name) {
+        var ownerList = ownerRepository.findOwnerByName(name);
+        if (ownerList.isEmpty()) {
+            throw new UserNotFoundException("Owner not found");
+        } else {
+            return ownerList;
+        }
     }
 
     public Owner create(Owner owner) {
@@ -35,7 +52,4 @@ public class OwnerService {
         return this.ownerRepository.save(owner);
     }
 
-    public List<Owner> findAll(int size, int offset) {
-        return ownerRepository.findAll(size, offset);
-    }
 }

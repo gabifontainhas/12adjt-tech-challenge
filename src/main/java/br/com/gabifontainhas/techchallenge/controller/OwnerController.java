@@ -39,6 +39,29 @@ public class OwnerController {
         return ResponseEntity.ok(ownerDTOList);
     }
 
+    @Operation(summary = "Get owner details by ID", description = "Fetches a single owner's detailed information based on the provided unique identifier.")
+    @ApiResponse(responseCode = "200", description = "Owner data retrieved successfully.")
+    @ApiResponse(responseCode = "404", description = "Owner not found with the provided ID",
+            content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = ApiErrorDoc.OwnerNotFoundDTO.class)))
+    @GetMapping("/{id}")
+    public ResponseEntity<OwnerDTO.Response> findOwnerById(@PathVariable Long id) {
+        var ownerDTO = new OwnerDTO.Response(ownerService.findOwnerById(id));
+        return ResponseEntity.ok(ownerDTO);
+    }
+
+    @Operation(summary = "Get owner details by name", description = "Fetches a list of owner's detailed information based on the provided exact name.")
+    @ApiResponse(responseCode = "200", description = "Owner data retrieved successfully.")
+    @ApiResponse(responseCode = "404", description = "Owner not found with the provided name",
+            content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = ApiErrorDoc.OwnerNotFoundByNameDTO.class)))
+    @GetMapping("/owner")
+    public ResponseEntity<List<OwnerDTO.Response>> findOwnerByName(@RequestParam String name) {
+        var ownerList = ownerService.findOwnerByName(name);
+        var ownerDTOList = ownerList.stream().map(OwnerDTO.Response::new).collect(Collectors.toList());
+        return ResponseEntity.ok(ownerDTOList);
+    }
+
     @Operation(summary = "Create a new owner", description = "Persists a new owner record in the database. E-mail must be unique. Returns the created entity with its generated ID")
     @ApiResponse(responseCode = "201", description = "Owner successfully created.")
     @ApiResponse(responseCode = "422", description = "E-mail already exists",

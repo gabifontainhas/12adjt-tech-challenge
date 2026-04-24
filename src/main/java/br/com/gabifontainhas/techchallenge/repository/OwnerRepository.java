@@ -13,9 +13,8 @@ public interface OwnerRepository extends JpaRepository<Owner, Long> {
 
     Optional<Owner> findOwnerById(Long id);
 
-
     @Query("SELECT o FROM Owner o LIMIT :size OFFSET :offset")
     List<Owner> findAll(int size, int offset);
 
-
+    List<Owner> findOwnerByName(String name);
 }

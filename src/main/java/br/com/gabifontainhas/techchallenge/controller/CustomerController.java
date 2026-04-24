@@ -39,13 +39,36 @@ public class CustomerController {
         return ResponseEntity.ok(customerDTOList);
     }
 
+    @Operation(summary = "Get customer details by ID", description = "Fetches a single customer's detailed information based on the provided unique identifier.")
+    @ApiResponse(responseCode = "200", description = "Customer data retrieved successfully.")
+    @ApiResponse(responseCode = "404", description = "Customer not found with the provided ID",
+            content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = ApiErrorDoc.CustomerNotFoundDTO.class)))
+    @GetMapping("/{id}")
+    public ResponseEntity<CustomerDTO.Response> findCustomerById(@PathVariable Long id) {
+        var customerDTO = new CustomerDTO.Response(customerService.findCustomerById(id));
+        return ResponseEntity.ok(customerDTO);
+    }
+
+    @Operation(summary = "Get customer details by name", description = "Fetches a single customer's detailed information based on the provided exact name.")
+    @ApiResponse(responseCode = "200", description = "Customer data retrieved successfully.")
+    @ApiResponse(responseCode = "404", description = "Customer not found with the provided name",
+            content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = ApiErrorDoc.CustomerNotFoundByNameDTO.class)))
+    @GetMapping("/customer")
+    public ResponseEntity<List<CustomerDTO.Response>> findUserByName(@RequestParam String name) {
+        var customerList = customerService.findCustomerByName(name);
+        var customerDTOList = customerList.stream().map(CustomerDTO.Response::new).collect(Collectors.toList());
+        return ResponseEntity.ok(customerDTOList);
+    }
+
     @Operation(summary = "Create a new customer", description = "Persists a new customer record in the database. E-mail must be unique. Returns the created entity with its generated ID")
     @ApiResponse(responseCode = "201", description = "Customer successfully created.")
     @ApiResponse(responseCode = "422", description = "E-mail already exists",
             content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ApiErrorDoc.CustomerEmailAlreadyExistsDTO.class)))
     @PostMapping
-    public ResponseEntity<CustomerDTO.Response> create(@Valid @RequestBody CustomerDTO.PostRequest dto) { //retornar o objeto
+    public ResponseEntity<CustomerDTO.Response> create(@Valid @RequestBody CustomerDTO.PostRequest dto) {
         var customer = this.customerService.create(new Customer(dto));
         return ResponseEntity.status(HttpStatus.CREATED).body(new CustomerDTO.Response(customer));
     }
@@ -56,7 +79,7 @@ public class CustomerController {
             content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = ApiErrorDoc.CustomerNotFoundDTO.class)))
     @PutMapping("/{id}")
-    public ResponseEntity<CustomerDTO.Response> update(@PathVariable Long id, @Valid @RequestBody CustomerDTO.PutRequest dto) { //retornar o objeto
+    public ResponseEntity<CustomerDTO.Response> update(@PathVariable Long id, @Valid @RequestBody CustomerDTO.PutRequest dto) {
         var customer = this.customerService.update(id, new Customer(dto));
         return ResponseEntity.ok(new CustomerDTO.Response(customer));
     }

@@ -19,6 +19,23 @@ public class CustomerService {
         this.userRepository = userRepository;
     }
 
+    public List<Customer> findAll(int size, int offset) {
+        return customerRepository.findAll(size, offset);
+    }
+
+    public Customer findCustomerById(Long id) {
+        return customerRepository.findCustomerById(id).orElseThrow(() -> new UserNotFoundException("Customer not found"));
+    }
+
+    public List<Customer> findCustomerByName(String name) {
+        var customerList = customerRepository.findCustomerByName(name);
+        if (customerList.isEmpty()) {
+            throw new UserNotFoundException("Customer not found");
+        } else {
+            return customerList;
+        }
+    }
+
     public Customer create(Customer customer) {
         if (userRepository.existsUserByEmail(customer.getEmail())) {
             throw new EmailAlreadyExistsException("E-mail already exists");
@@ -31,10 +48,6 @@ public class CustomerService {
         var customer = customerRepository.findCustomerById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
         customer.update(updatedCustomer);
         return this.customerRepository.save(customer);
-    }
-
-    public List<Customer> findAll(int size, int offset) {
-        return customerRepository.findAll(size, offset);
     }
 
 }
