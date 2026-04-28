@@ -29,8 +29,8 @@ public class Customer extends User {
         this.phoneNumber = dto.phoneNumber();
     }
 
-    public void update(Customer updatedCustomer) {
-        super.update(updatedCustomer);
-        this.phoneNumber = updatedCustomer.getPhoneNumber();
+    public void update(Customer customer) {
+        super.update(customer);
+        this.phoneNumber = customer.getPhoneNumber();
     }
 }
