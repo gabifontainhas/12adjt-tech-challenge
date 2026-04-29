@@ -36,11 +36,20 @@ git clone https://github.com/gabifontainhas/12adjt-tech-challenge.git
 
 ## 📖 Documentação da API (Swagger)
 A documentação interativa com todos os endpoints, parâmetros e esquemas de retorno pode ser acessada localmente enquanto a aplicação estiver rodando:
-http://localhost:8080/swagger-ui/index.html
+
+🔗 [Swagger](http://localhost:8080/swagger-ui/index.html
+)
 
 ## 🧪 Coleção do Postman para Testes
 Para validação dos fluxos, foi disponibilizada uma coleção para o Postman, com cenários de sucesso e erro:
 
+🔗 [Postman](https://github.com/gabifontainhas/12adjt-tech-challenge/blob/master/postman/TechChallenge.postman_collection.json
+)
+
+Para importar a coleção:
+1. Abra o Postman.
+2. Clique em File > Import.
+3. Arraste ou selecione o arquivo baixado.
 
 ## ✒️ Autora
 
