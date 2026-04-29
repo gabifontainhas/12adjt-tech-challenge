@@ -16,7 +16,7 @@ public final class OwnerDTO {
 
     @Schema(name = "OwnerDTO.PostRequest")
     public record PostRequest(
-            @Schema(description = "E-mail address", example = "owner@yourrestaurant.com")
+            @Schema(description = "E-mail address", example = "michaelscott@dundermifflin")
             @NotBlank
             String email,
 
@@ -65,13 +65,13 @@ public final class OwnerDTO {
             @Schema(description = "Unique identifier of the owner", example = "101", accessMode = Schema.AccessMode.READ_ONLY)
             Long id,
 
-            @Schema(description = "E-mail address", example = "owner@yourrestaurant.com")
+            @Schema(description = "E-mail address", example = "michaelscott@dundermifflin")
             String email,
 
             @Schema(description = "Full name of the restaurant owner", example = "Michael Scott")
             String name,
 
-            @Schema(description = "Unique username for system authentication. It's the same as the e-mail address", example = "owner@yourrestaurant.com")
+            @Schema(description = "Unique username for system authentication. It's the same as the e-mail address", example = "michaelscott@dundermifflin")
             String login,
 
             @Schema(description = "Timestamp of the last record modification", example = "2026-04-23")

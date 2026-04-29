@@ -86,7 +86,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8080/v1/users/300?lalala=1213",
+              "raw": "http://localhost:8080/v1/users/300",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -96,12 +96,6 @@
                 "v1",
                 "users",
                 "300"
-              ],
-              "query": [
-                {
-                  "key": "lalala",
-                  "value": "1213"
-                }
               ]
             }
           },
@@ -113,7 +107,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8080/v1/users/user?name=Michael+Scott",
+              "raw": "http://localhost:8080/v1/users/user?name=Jim+Halpert",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -127,7 +121,7 @@
               "query": [
                 {
                   "key": "name",
-                  "value": "Michael+Scott"
+                  "value": "Jim+Halpert"
                 }
               ]
             }
@@ -167,7 +161,7 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "http://localhost:8080/v1/users/3",
+              "raw": "http://localhost:8080/v1/users/2",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -176,7 +170,7 @@
               "path": [
                 "v1",
                 "users",
-                "3"
+                "2"
               ]
             }
           },
@@ -238,7 +232,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8080/v1/users/2/password",
+              "raw": "http://localhost:8080/v1/users/1/password",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -247,7 +241,7 @@
               "path": [
                 "v1",
                 "users",
-                "2",
+                "1",
                 "password"
               ]
             }
@@ -300,7 +294,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8080/v1/users/2/password",
+              "raw": "http://localhost:8080/v1/users/1/password",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -309,7 +303,7 @@
               "path": [
                 "v1",
                 "users",
-                "2",
+                "1",
                 "password"
               ]
             }
@@ -454,7 +448,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8080/v1/customers/1",
+              "raw": "http://localhost:8080/v1/customers/3",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -463,7 +457,7 @@
               "path": [
                 "v1",
                 "customers",
-                "1"
+                "3"
               ]
             }
           },
@@ -564,7 +558,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8080/v1/customers?size=10&offset=0",
+              "raw": "http://localhost:8080/v1/customers",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -573,16 +567,6 @@
               "path": [
                 "v1",
                 "customers"
-              ],
-              "query": [
-                {
-                  "key": "size",
-                  "value": "10"
-                },
-                {
-                  "key": "offset",
-                  "value": "0"
-                }
               ]
             }
           },
@@ -636,7 +620,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8080/v1/customers/customer?name=Gabi+Sordi2",
+              "raw": "http://localhost:8080/v1/customers/customer?name=Jim+Halpert",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -650,7 +634,7 @@
               "query": [
                 {
                   "key": "name",
-                  "value": "Gabi+Sordi2"
+                  "value": "Jim+Halpert"
                 }
               ]
             }
@@ -792,7 +776,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8080/v1/owners/8",
+              "raw": "http://localhost:8080/v1/owners/5",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -801,7 +785,7 @@
               "path": [
                 "v1",
                 "owners",
-                "8"
+                "5"
               ]
             }
           },
@@ -814,7 +798,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"name\": \"New owner Sordi3\",\r\n    \"restaurantName\": \"BK\",\r\n    \"address\": {\r\n        \"street\": \"Rua das flechas 111\",\r\n        \"number\": \"1\",\r\n        \"city\": \"Sao Paulo\",\r\n        \"state\": \"SP\",\r\n        \"zipcode\": \"00101001\"\r\n    }\r\n}",
+              "raw": "{\r\n    \"name\": \"Stanley\",\r\n    \"restaurantName\": \"Dunder Mifflin\",\r\n    \"address\": {\r\n        \"street\": \"Rua das flechas 111\",\r\n        \"number\": \"1\",\r\n        \"city\": \"Sao Paulo\",\r\n        \"state\": \"SP\",\r\n        \"zipcode\": \"00101001\"\r\n    }\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -822,7 +806,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8080/v1/owners/4",
+              "raw": "http://localhost:8080/v1/owners/400",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -831,7 +815,7 @@
               "path": [
                 "v1",
                 "owners",
-                "4"
+                "400"
               ]
             }
           },
@@ -844,7 +828,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"name\": \"New owner Sordi3\",\r\n    \"restaurantName\": \"BK\",\r\n    \"address\": {\r\n        \"street\": \"Rua das flechas 111\",\r\n        \"number\": \"1\",\r\n        \"city\": \"Sao Paulo\",\r\n        \"state\": \"SP\",\r\n        \"zipcode\": \"00101001\"\r\n    }\r\n}",
+              "raw": "{\r\n    \"name\": \"Michael Scott\",\r\n    \"restaurantName\": \"Dunder Mifflin\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -852,7 +836,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8080/v1/owners/4",
+              "raw": "http://localhost:8080/v1/owners/5",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -861,7 +845,7 @@
               "path": [
                 "v1",
                 "owners",
-                "4"
+                "5"
               ]
             }
           },
@@ -903,7 +887,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8080/v1/owners?size=10&offset=0",
+              "raw": "http://localhost:8080/v1/owners",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -912,16 +896,6 @@
               "path": [
                 "v1",
                 "owners"
-              ],
-              "query": [
-                {
-                  "key": "size",
-                  "value": "10"
-                },
-                {
-                  "key": "offset",
-                  "value": "0"
-                }
               ]
             }
           },
@@ -1065,7 +1039,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"login\": \"gabisordi6@teste.com\",\r\n    \"password\": \"12345\"\r\n}",
+              "raw": "{\r\n    \"login\": \"jimhalpert@teste.com\",\r\n    \"password\": \"9876\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1095,7 +1069,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"login\": \"owner_gabisordi3@teste.com\",\r\n    \"password\": \"12345\"\r\n}",
+              "raw": "{\r\n    \"login\": \"angela.schrute@dunderteste.com\",\r\n    \"password\": \"12345\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1125,37 +1099,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"login\": \"owner_gabisordi3@teste.com\",\r\n    \"password\": \"12345\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "http://localhost:8080/v1/auth/login",
-              "protocol": "http",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "v1",
-                "auth",
-                "login"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "POST Login - Error - Method Not Allowed",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"login\": \"owner_gabisordi3@teste.com\",\r\n    \"password\": \"12345\"\r\n}",
+              "raw": "{\r\n    \"login\": \"owner_gabisordi3@teste.com\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"

@@ -10,7 +10,7 @@ public final class LoginDTO {
 
     @Schema(name = "LoginDTO.Request")
     public record Request(
-            @Schema(description = "User login", example = "gabriela.sordi@teste.com")
+            @Schema(description = "User login", example = "jim.halpert@dundermifflin.com")
             @NotBlank
             String login,
             @Schema(description = "User password", example = "Teste@123")
@@ -23,7 +23,7 @@ public final class LoginDTO {
     public record Response(
             @Schema(description = "Generated token for login", example = "0f138924-72c3-4958-af0f-05850dd4cd3d")
             String token,
-            @Schema(description = "User login", example = "gabriela.sordi@teste.com")
+            @Schema(description = "User login", example = "jim.halpert@dundermifflin.com")
             String login
     ) {
     }

@@ -16,11 +16,11 @@ public final class CustomerDTO {
 
     @Schema(name = "CustomerDTO.PostRequest")
     public record PostRequest(
-            @Schema(description = "E-mail address", example = "joao.silva@teste.com")
+            @Schema(description = "E-mail address", example = "jim.halpert@dundermifflin.com")
             @NotBlank
             String email,
 
-            @Schema(description = "Full name", example = "Joao da Silva")
+            @Schema(description = "Full name", example = "Jim Halpert")
             @NotBlank
             String name,
 
@@ -47,7 +47,7 @@ public final class CustomerDTO {
     @Schema(name = "CustomerDTO.PutRequest")
     public record PutRequest(
 
-            @Schema(description = "Full name", example = "Joao da Silva")
+            @Schema(description = "Full name", example = "Jim Halpert")
             @NotBlank
             String name,
 
@@ -67,13 +67,13 @@ public final class CustomerDTO {
             @Schema(description = "Unique identifier of the customer", example = "42", accessMode = Schema.AccessMode.READ_ONLY)
             Long id,
 
-            @Schema(description = "E-mail address", example = "joao.silva@teste.com")
+            @Schema(description = "E-mail address", example = "jim.halpert@dundermifflin.com")
             String email,
 
-            @Schema(description = "Full name", example = "Joao da Silva")
+            @Schema(description = "Full name", example = "Jim Halpert")
             String name,
 
-            @Schema(description = "Unique username for system authentication. It's the same as the e-mail address", example = "joao.silva@teste.com")
+            @Schema(description = "Unique username for system authentication. It's the same as the e-mail address", example = "jim.halpert@dundermifflin.com")
             String login,
 
             @Schema(description = "Timestamp of the last record modification", example = "2026-04-23", accessMode = Schema.AccessMode.READ_ONLY)
