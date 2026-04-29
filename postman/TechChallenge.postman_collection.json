@@ -949,7 +949,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8080/v1/owners/owner?name=2owner+Sordi",
+              "raw": "http://localhost:8080/v1/owners/owner?name=Angela+Schrute",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -963,7 +963,7 @@
               "query": [
                 {
                   "key": "name",
-                  "value": "2owner+Sordi"
+                  "value": "Angela+Schrute"
                 }
               ]
             }
@@ -1009,7 +1009,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"login\": \"gabisordi6@teste.com\",\r\n    \"password\": \"12345\"\r\n}",
+              "raw": "{\r\n    \"login\": \"michael.scott@dundermifflin.com\",\r\n    \"password\": \"12345\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
